@@ -7,7 +7,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(
+@Component(modules = [
         ApplicationModule::class,
         AndroidSupportInjectionModule::class,
         ViewModelFactoryModule::class,
@@ -16,7 +16,7 @@ import javax.inject.Singleton
         UseCasesModule::class,
         ViewModelModule::class,
         MainActivityModule::class
-        ))
+        ])
 interface ApplicationComponent {
     fun inject(app: CryptoApplication)
 }
