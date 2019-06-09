@@ -5,13 +5,12 @@ import com.antonicastejon.cryptodata.domain.CryptoListUseCases
 import com.antonicastejon.cryptodata.model.CoinMarketCapRepository
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
-/**
- * Created by Antoni Castejón on 04/01/2018.
- */
 @Module
 class UseCasesModule {
 
+    @Singleton
     @Provides
     fun providesCryptoListUseCases(coinMarketCapRepository: CoinMarketCapRepository): CryptoListUseCases = CryptoListInteractor(coinMarketCapRepository)
 }

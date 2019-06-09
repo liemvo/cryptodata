@@ -11,10 +11,6 @@ import io.reactivex.Scheduler
 import javax.inject.Inject
 import javax.inject.Named
 
-/**
- * Created by Antoni Castejón on 31/12/2017.
- */
-
 private val TAG = CryptoListViewModel::class.java.name
 
 class CryptoListViewModel
@@ -39,11 +35,6 @@ class CryptoListViewModel
         val pageNum = 0
         stateLiveData.value = LoadingState(pageNum, false, emptyList())
         updateCryptoList()
-    }
-
-    fun restoreCryptoList() {
-        val pageNum = obtainCurrentPageNum()
-        stateLiveData.value = DefaultState(pageNum, false, obtainCurrentData())
     }
 
     private fun getCryptoList(page:Int) {

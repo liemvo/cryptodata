@@ -8,19 +8,18 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-
-/**
- * Created by Antoni Castejón on 04/01/2018.
- */
+import javax.inject.Singleton
 
 private const val BASE_URL = "https://api.coinmarketcap.com/"
 
 @Module
 class NetModule {
 
+    @Singleton
     @Provides
     fun providesCoinMarketCapApi(retrofit: Retrofit) = retrofit.create(CoinMarketCapApi::class.java)
 
+    @Singleton
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient) =
             Retrofit.Builder()
@@ -30,7 +29,7 @@ class NetModule {
                     .client(okHttpClient)
                     .build()
 
-
+    @Singleton
     @Provides
     fun providesOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor().apply {

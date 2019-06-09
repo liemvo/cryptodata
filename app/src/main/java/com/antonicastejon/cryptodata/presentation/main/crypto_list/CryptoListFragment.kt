@@ -19,9 +19,6 @@ import kotlinx.android.synthetic.main.crypto_list_fragment.*
 import kotlinx.android.synthetic.main.crypto_list_fragment.view.*
 import javax.inject.Inject
 
-/**
- * Created by Antoni Castejón on 29/12/2017.
- */
 val CRYPTO_LIST_FRAGMENT_TAG = CryptoListFragment::class.java.name
 
 private val TAG = CryptoListFragment::class.java.name
@@ -69,24 +66,6 @@ class CryptoListFragment : Fragment() {
         super.onAttach(context)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CryptoListViewModel::class.java)
-        observeViewModel()
-        savedInstanceState?.let {
-            viewModel.restoreCryptoList()
-        } ?: viewModel.updateCryptoList()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.stateLiveData.removeObserver(stateObserver)
-    }
-
-    private fun observeViewModel() {
-        viewModel.stateLiveData.observe(this, stateObserver)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.crypto_list_fragment, container, false)
         initializeToolbar(view)
@@ -110,6 +89,23 @@ class CryptoListFragment : Fragment() {
 
     private fun initializeSwipeToRefreshView(view:View) {
         view.swipeRefreshLayout.setOnRefreshListener { viewModel.resetCryptoList() }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CryptoListViewModel::class.java)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        observeViewModel()
+        if (savedInstanceState == null) {
+            viewModel.updateCryptoList()
+        }
+    }
+
+    private fun observeViewModel() {
+        viewModel.stateLiveData.observe(this, stateObserver)
     }
 
     private fun loadNextPage() {
