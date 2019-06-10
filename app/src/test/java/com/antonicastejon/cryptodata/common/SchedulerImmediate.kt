@@ -10,5 +10,5 @@ class SchedulerImmediate: Scheduler() {
         return super.scheduleDirect(run, 0, unit)
     }
 
-    override fun createWorker(): Worker = ExecutorScheduler.ExecutorWorker(Runnable::run)
+    override fun createWorker(): Worker = ExecutorScheduler.ExecutorWorker(Runnable::run, false)
 }

@@ -1,12 +1,12 @@
 package com.antonicastejon.cryptodata.presentation.main.crypto_list
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +25,7 @@ private val TAG = CryptoListFragment::class.java.name
 
 fun newCryptoListFragment() = CryptoListFragment()
 
-class CryptoListFragment : Fragment() {
+class CryptoListFragment : androidx.fragment.app.Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -79,7 +79,7 @@ class CryptoListFragment : Fragment() {
     }
 
     private fun initializeRecyclerView(view:View) {
-        val linearLayoutManager = LinearLayoutManager(context)
+        val linearLayoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         view.recyclerView.apply {
             layoutManager = linearLayoutManager
             adapter = cryptoListAdapter
@@ -114,7 +114,7 @@ class CryptoListFragment : Fragment() {
     }
 
 
-    inner class OnScrollListener(layoutManager: LinearLayoutManager) : PaginationScrollListener(layoutManager) {
+    inner class OnScrollListener(layoutManager: androidx.recyclerview.widget.LinearLayoutManager) : PaginationScrollListener(layoutManager) {
         override fun isLoading() = isLoading
         override fun loadMoreItems() = loadNextPage()
         override fun getTotalPageCount() = LIMIT_CRYPTO_LIST

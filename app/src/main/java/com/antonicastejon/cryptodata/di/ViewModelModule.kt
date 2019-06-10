@@ -1,6 +1,6 @@
 package com.antonicastejon.cryptodata.di
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.antonicastejon.cryptodata.presentation.main.crypto_list.CryptoListViewModel
 import dagger.Binds
 import dagger.MapKey

@@ -1,6 +1,6 @@
 package com.antonicastejon.cryptodata.presentation.main.crypto_list
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import dagger.Binds
 import dagger.Module
 import dagger.Subcomponent
@@ -19,5 +19,5 @@ abstract class CryptoListFragmentModule {
     @Binds
     @IntoMap
     @FragmentKey(CryptoListFragment::class)
-    abstract fun bindCryptoListFragmentInjectorFactory(builder: CryptoListFragmentSubcomponent.Builder): AndroidInjector.Factory<out Fragment>
+    abstract fun bindCryptoListFragmentInjectorFactory(builder: CryptoListFragmentSubcomponent.Builder): AndroidInjector.Factory<out androidx.fragment.app.Fragment>
 }

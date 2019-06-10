@@ -1,7 +1,7 @@
 package com.antonicastejon.cryptodata.presentation.common
 
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,11 +21,11 @@ class CryptoListRecyclerAdapter : PaginationAdapter<CryptoViewModel>() {
         addLoadingViewFooter(emptyCryptoViewModel)
     }
 
-    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindItemViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder?, position: Int) {
         if (holder is CryptoViewHolder) holder.bind(dataList[position])
     }
 
-    override fun onCreateItemViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateItemViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.crypto_list_item, parent, false)
         return CryptoViewHolder(view)
     }
@@ -37,7 +37,7 @@ class CryptoListRecyclerAdapter : PaginationAdapter<CryptoViewModel>() {
     }
 }
 
-class CryptoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CryptoViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
     val resources by lazy { itemView.context.resources }
 

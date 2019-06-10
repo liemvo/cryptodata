@@ -1,8 +1,8 @@
 package com.antonicastejon.cryptodata.presentation.main
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.antonicastejon.cryptodata.R
 import com.antonicastejon.cryptodata.common.replaceFragment
 import com.antonicastejon.cryptodata.presentation.main.crypto_list.CRYPTO_LIST_FRAGMENT_TAG
@@ -15,11 +15,11 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var fragmentInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     val cryptoListFragment by lazy { newCryptoListFragment() }
 
-    override fun supportFragmentInjector(): AndroidInjector<android.support.v4.app.Fragment> {
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment> {
         return fragmentInjector
     }
 

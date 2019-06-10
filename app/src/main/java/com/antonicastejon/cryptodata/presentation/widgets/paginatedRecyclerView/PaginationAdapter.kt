@@ -1,6 +1,6 @@
 package com.antonicastejon.cryptodata.presentation.widgets.paginatedRecyclerView
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +9,15 @@ import com.antonicastejon.cryptodata.R
 private const val LOADING_VIEW_TYPE = 0
 private const val ITEM_VIEW_TYPE = 1
 
-abstract class PaginationAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    abstract fun onCreateItemViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder
-    abstract fun onBindItemViewHolder(holder: RecyclerView.ViewHolder?, position: Int)
+abstract class PaginationAdapter<D> : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
+    abstract fun onCreateItemViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder
+    abstract fun onBindItemViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder?, position: Int)
     abstract fun addLoadingViewFooter()
     
     private var isLoadingViewAdded = false
     protected var dataList = mutableListOf<D>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder =
         when (viewType) {
             LOADING_VIEW_TYPE -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.list_loading_footer_item, parent, false)
@@ -26,7 +26,7 @@ abstract class PaginationAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHold
             else -> onCreateItemViewHolder(parent, viewType)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) != LOADING_VIEW_TYPE) onBindItemViewHolder(holder, position)
     }
 
@@ -53,4 +53,4 @@ abstract class PaginationAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHold
 
 }
 
-class LoadingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+class LoadingViewHolder(itemView: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView)

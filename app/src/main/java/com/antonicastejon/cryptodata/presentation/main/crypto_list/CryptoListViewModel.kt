@@ -1,7 +1,7 @@
 package com.antonicastejon.cryptodata.presentation.main.crypto_list
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.antonicastejon.cryptodata.di.SCHEDULER_IO
 import com.antonicastejon.cryptodata.di.SCHEDULER_MAIN_THREAD
 import com.antonicastejon.cryptodata.domain.CryptoListUseCases
